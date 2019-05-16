@@ -11,17 +11,8 @@
 #include <iostream>
 #include <stdlib.h>
 
-GLuint sunTex;
-GLuint starTex;
-GLuint mercuryTex;
-GLuint venusTex;
-GLuint earthTex;
-GLuint marsTex;
-GLuint jupiterTex;
-GLuint ringOfSaturnTex;
-GLuint saturnTex;
-GLuint uranusTex;
-GLuint neptuneTex;
+GLuint sunTex, starTex, mercuryTex, venusTex, earthTex, marsTex, jupiterTex,
+		ringOfSaturnTex, saturnTex, uranusTex, neptuneTex;
 
 float eyeX = 10, eyeY = 12, eyeZ = 13;
 float centerX = 0, centerY = 0, centerZ = 0;
@@ -660,7 +651,8 @@ void myWireSphere(GLfloat radius, int slices, int stacks) {
 
 static int yearForPlanet = 0, dayForPlanet = 0;
 
-void createPlanet(GLuint texture, double distance, double radius, double year, double day) {
+void createPlanet(GLuint texture, double distance, double radius, double year,
+		double day) {
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glRotatef((GLfloat) year, 0.0, 1.0, 0.0);
 	glTranslatef(distance, 0.0, 0.0);
@@ -686,19 +678,19 @@ void display() {
 	glEnable(GL_LIGHTING);
 
 	glPushMatrix();
-	glBindTexture(GL_TEXTURE_2D, starTex);
-	// create a sphere and use it as a background to store the texture for the stars
-	myWireSphere(20, 15, 15);
-	GLUquadric *quadricStars = gluNewQuadric();
-	gluQuadricDrawStyle(quadricStars, GLU_FILL);
-	gluQuadricNormals(quadricStars, GLU_SMOOTH);
-	gluQuadricTexture(quadricStars, GL_TRUE);
-	gluSphere(quadricStars, 20.0, 20, 20);
-	gluDeleteQuadric(quadricStars);
+//	glBindTexture(GL_TEXTURE_2D, starTex);
+	//create a sphere and use it as a background to store the texture for the stars
+	myWireSphere(20, 30, 30);
+//	GLUquadric *quadricStars = gluNewQuadric();
+//	gluQuadricDrawStyle(quadricStars, GLU_FILL);
+//	gluQuadricNormals(quadricStars, GLU_SMOOTH);
+//	gluQuadricTexture(quadricStars, GL_TRUE);
+//	gluSphere(quadricStars, 20.0, 20, 20);
+//	gluDeleteQuadric(quadricStars);
 	glPopMatrix();
 
 	glBindTexture(GL_TEXTURE_2D, sunTex);
-	//draw sun with radius of 1
+//	//draw sun with radius of 1
 	myWireSphere(1, 15, 15);
 	GLUquadric *quadricSun = gluNewQuadric();
 	gluQuadricDrawStyle(quadricSun, GLU_FILL);
@@ -739,7 +731,7 @@ void display() {
 	glPopMatrix();
 
 	glPushMatrix();
-	createPlanet(marsTex, 6.5, 0.06, 0.53*yearForPlanet, dayForPlanet);
+	createPlanet(marsTex, 6.5, 0.06, 0.53 * yearForPlanet, dayForPlanet);
 	GLUquadric *quadricMars = gluNewQuadric();
 	gluQuadricDrawStyle(quadricMars, GLU_FILL);
 	gluQuadricNormals(quadricMars, GLU_SMOOTH);
@@ -749,7 +741,7 @@ void display() {
 	glPopMatrix();
 
 	glPushMatrix();
-	createPlanet(jupiterTex, 9.0, 0.9, 0.08*yearForPlanet, dayForPlanet);
+	createPlanet(jupiterTex, 9.0, 0.9, 0.08 * yearForPlanet, dayForPlanet);
 	GLUquadric *quadricJupiter = gluNewQuadric();
 	gluQuadricDrawStyle(quadricJupiter, GLU_FILL);
 	gluQuadricNormals(quadricJupiter, GLU_SMOOTH);
@@ -761,21 +753,22 @@ void display() {
 	glPushMatrix();
 	glColor3f(1.0, 0.0, 0.0);
 	glBindTexture(GL_TEXTURE_2D, ringOfSaturnTex);
-	glRotatef((GLfloat) 0.03*yearForPlanet, 0.0, 1.0, 0.0);
+	glRotatef((GLfloat) 0.03 * yearForPlanet, 0.0, 1.0, 0.0);
 	glTranslatef(11.5, 0.0, 0.0);
 	glRotatef((GLfloat) dayForPlanet, 0.0, 1.0, 0.0);
 	glRotatef(90, 1, 0, 0);
-	glutWireTorus(0.05, 1.0, 50.0, 50.0);
-//	GLUquadric *quadricRingOfSaturn = gluNewQuadric();
-//	gluQuadricDrawStyle(quadricRingOfSaturn, GLU_FILL);
-//	gluQuadricNormals(quadricRingOfSaturn, GLU_SMOOTH);
-//	gluQuadricTexture(quadricRingOfSaturn, GL_TRUE);
-//	gluSphere(quadricRingOfSaturn, 5.0, 20, 20);
-//	gluDeleteQuadric(quadricRingOfSaturn);
+
+	GLUquadric *quadricRingOfSaturn = gluNewQuadric();
+	gluQuadricDrawStyle(quadricRingOfSaturn, GLU_FILL);
+	gluQuadricNormals(quadricRingOfSaturn, GLU_SMOOTH);
+	gluQuadricTexture(quadricRingOfSaturn, GL_TRUE);
+	gluDisk(quadricRingOfSaturn, 1, 1.5, 100.0, 1.0);
+	gluDeleteQuadric(quadricRingOfSaturn);
+
 	glPopMatrix();
 
 	glPushMatrix();
-	createPlanet(saturnTex, 11.5, 0.7, 0.03*yearForPlanet, dayForPlanet);
+	createPlanet(saturnTex, 11.5, 0.7, 0.03 * yearForPlanet, dayForPlanet);
 	GLUquadric *quadricSaturn = gluNewQuadric();
 	gluQuadricDrawStyle(quadricSaturn, GLU_FILL);
 	gluQuadricNormals(quadricSaturn, GLU_SMOOTH);
@@ -785,7 +778,7 @@ void display() {
 	glPopMatrix();
 
 	glPushMatrix();
-	createPlanet(uranusTex, 14.0, 0.5, 0.01189*yearForPlanet, dayForPlanet);
+	createPlanet(uranusTex, 14.0, 0.5, 0.01189 * yearForPlanet, dayForPlanet);
 	GLUquadric *quadricUranus = gluNewQuadric();
 	gluQuadricDrawStyle(quadricUranus, GLU_FILL);
 	gluQuadricNormals(quadricUranus, GLU_SMOOTH);
@@ -795,7 +788,7 @@ void display() {
 	glPopMatrix();
 
 	glPushMatrix();
-	createPlanet(neptuneTex, 16.0, 0.5, 0.006*yearForPlanet, dayForPlanet);
+	createPlanet(neptuneTex, 16.0, 0.5, 0.006 * yearForPlanet, dayForPlanet);
 	GLUquadric *quadricNeptune = gluNewQuadric();
 	gluQuadricDrawStyle(quadricNeptune, GLU_FILL);
 	gluQuadricNormals(quadricNeptune, GLU_SMOOTH);
@@ -813,31 +806,41 @@ void KeyboardFunc(unsigned char key, int x, int y) {
 	//parallel front view
 	case 'a':
 	case 'A':
-		eyeX = 0, eyeY = 0, eyeZ = 6;
+//		eyeX = 0, eyeY = 0, eyeZ = 6;
+//		centerX = 0, centerY = 0, centerZ = 0;
+//		upX = 0, upY = 1, upZ = 0;
+		eyeX = 0, eyeY = 12, eyeZ = 25;
 		centerX = 0, centerY = 0, centerZ = 0;
 		upX = 0, upY = 1, upZ = 0;
 		glutPostRedisplay();
 		break;
-	//top view
+		//top view
 	case 'w':
 	case 'W':
-		eyeX = 0, eyeY = 6, eyeZ = 0; //was 6
+//		eyeX = 0, eyeY = 15, eyeZ = 0; //was 6
+//		centerX = 0, centerY = 0, centerZ = 0;
+//		upX = 0, upY = 1, upZ = 1; //both 1
+		eyeX = 0, eyeY = 30, eyeZ = 0; //was 6
 		centerX = 0, centerY = 0, centerZ = 0;
 		upX = 0, upY = 1, upZ = 1; //both 1
 		glutPostRedisplay();
 		break;
-	//parallel side view
+		//parallel side view
 	case 'd':
 	case 'D':
-		eyeX = 6, eyeY = 0, eyeZ = 0;
+//		eyeX = 15, eyeY = 0, eyeZ = 0;
+//		centerX = 0, centerY = 0, centerZ = 0;
+//		upX = 0, upY = 1, upZ = 0;
+
+		eyeX = 30, eyeY = 0, eyeZ = 0;
 		centerX = 0, centerY = 0, centerZ = 0;
 		upX = 0, upY = 1, upZ = 0;
 		glutPostRedisplay();
 		break;
-	// perspective
+		// perspective
 	case 's':
 	case 'S':
-		eyeX = 10, eyeY = 12, eyeZ = 13;
+		eyeX = 10, eyeY = 12, eyeZ = 15;
 		centerX = 0, centerY = 0, centerZ = 0;
 		upX = 0, upY = 1, upZ = 0;
 		glutPostRedisplay();
