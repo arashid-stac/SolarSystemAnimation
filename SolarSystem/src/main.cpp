@@ -836,7 +836,7 @@ void display() {
 
 void KeyboardFunc(unsigned char key, int x, int y) {
 	switch (key) {
-	//parallel front view
+		//parallel front view
 	case 'a':
 	case 'A':
 		eyeX = 0, eyeY = 0, eyeZ = 20;
