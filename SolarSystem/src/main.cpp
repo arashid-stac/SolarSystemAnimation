@@ -836,7 +836,7 @@ void display() {
 
 void KeyboardFunc(unsigned char key, int x, int y) {
 	switch (key) {
-	//parallel front view
+		//parallel front view
 	case 'a':
 	case 'A':
 		eyeX = 0, eyeY = 0, eyeZ = 20;
@@ -844,7 +844,7 @@ void KeyboardFunc(unsigned char key, int x, int y) {
 		upX = 0, upY = 1, upZ = 0;
 		glutPostRedisplay();
 		break;
-	//top view
+		//top view
 	case 'w':
 	case 'W':
 		eyeX = 0, eyeY = 20, eyeZ = 0; //was 6
@@ -852,7 +852,7 @@ void KeyboardFunc(unsigned char key, int x, int y) {
 		upX = 0, upY = 1, upZ = 1; //both 1
 		glutPostRedisplay();
 		break;
-	//parallel side view
+		//parallel side view
 	case 'd':
 	case 'D':
 		eyeX = 20, eyeY = 0, eyeZ = 0;
@@ -860,7 +860,7 @@ void KeyboardFunc(unsigned char key, int x, int y) {
 		upX = 0, upY = 1, upZ = 0;
 		glutPostRedisplay();
 		break;
-	//perspective
+		//perspective
 	case 's':
 	case 'S':
 		eyeX = 10, eyeY = 12, eyeZ = 13;
