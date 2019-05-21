@@ -152,7 +152,10 @@ void LoadGLTexturesStars() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\stars.bmp", imageStars)) {
 		exit(1);
 	}
@@ -195,7 +198,10 @@ void LoadGLTexturesMercury() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\mercury.bmp", imageMercury)) {
 		exit(1);
 	}
@@ -238,7 +244,10 @@ void LoadGLTexturesVenus() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\venus.bmp", imageVenus)) {
 		exit(1);
 	}
@@ -282,7 +291,10 @@ void LoadGLTexturesMars() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\mars.bmp", imageMars)) {
 		exit(1);
 	}
@@ -325,7 +337,10 @@ void LoadGLTexturesEarth() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\earth.bmp", imageEarth)) {
 		exit(1);
 	}
@@ -368,7 +383,10 @@ void LoadGLTexturesJupiter() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\jupiter.bmp", imageJupiter)) {
 		exit(1);
 	}
@@ -411,7 +429,10 @@ void LoadGLTexturesRingOfSaturn() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\ringOfSaturn.bmp",
 			imageRingOfSaturn)) {
 		exit(1);
@@ -455,7 +476,10 @@ void LoadGLTexturesSaturn() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\saturn.bmp", imageSaturn)) {
 		exit(1);
 	}
@@ -498,7 +522,10 @@ void LoadGLTexturesUranus() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\uranus.bmp", imageUranus)) {
 		exit(1);
 	}
@@ -541,7 +568,10 @@ void LoadGLTexturesNeptune() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\neptune.bmp", imageNeptune)) {
 		exit(1);
 	}
@@ -585,7 +615,10 @@ void LoadGLTexturesSun() {
 		exit(0);
 	}
 
-	//load picture from file
+	/*load picture from file
+	 *You have to edit the path to lead to where your desired
+	 *texture is located on your device
+	 */
 	if (!ImageLoad("C:\\Users\\allir\\Desktop\\sun.bmp", imageSun)) {
 		exit(1);
 	}
@@ -678,15 +711,15 @@ void display() {
 	glEnable(GL_LIGHTING);
 
 	glPushMatrix();
-//	glBindTexture(GL_TEXTURE_2D, starTex);
+	glBindTexture(GL_TEXTURE_2D, starTex);
 	//create a sphere and use it as a background to store the texture for the stars
 	myWireSphere(20, 30, 30);
-//	GLUquadric *quadricStars = gluNewQuadric();
-//	gluQuadricDrawStyle(quadricStars, GLU_FILL);
-//	gluQuadricNormals(quadricStars, GLU_SMOOTH);
-//	gluQuadricTexture(quadricStars, GL_TRUE);
-//	gluSphere(quadricStars, 20.0, 20, 20);
-//	gluDeleteQuadric(quadricStars);
+	GLUquadric *quadricStars = gluNewQuadric();
+	gluQuadricDrawStyle(quadricStars, GLU_FILL);
+	gluQuadricNormals(quadricStars, GLU_SMOOTH);
+	gluQuadricTexture(quadricStars, GL_TRUE);
+	gluSphere(quadricStars, 20.0, 20, 20);
+	gluDeleteQuadric(quadricStars);
 	glPopMatrix();
 
 	glBindTexture(GL_TEXTURE_2D, sunTex);
@@ -806,10 +839,7 @@ void KeyboardFunc(unsigned char key, int x, int y) {
 	//parallel front view
 	case 'a':
 	case 'A':
-//		eyeX = 0, eyeY = 0, eyeZ = 6;
-//		centerX = 0, centerY = 0, centerZ = 0;
-//		upX = 0, upY = 1, upZ = 0;
-		eyeX = 0, eyeY = 12, eyeZ = 25;
+		eyeX = 0, eyeY = 0, eyeZ = 20;
 		centerX = 0, centerY = 0, centerZ = 0;
 		upX = 0, upY = 1, upZ = 0;
 		glutPostRedisplay();
@@ -817,10 +847,7 @@ void KeyboardFunc(unsigned char key, int x, int y) {
 		//top view
 	case 'w':
 	case 'W':
-//		eyeX = 0, eyeY = 15, eyeZ = 0; //was 6
-//		centerX = 0, centerY = 0, centerZ = 0;
-//		upX = 0, upY = 1, upZ = 1; //both 1
-		eyeX = 0, eyeY = 30, eyeZ = 0; //was 6
+		eyeX = 0, eyeY = 20, eyeZ = 0; //was 6
 		centerX = 0, centerY = 0, centerZ = 0;
 		upX = 0, upY = 1, upZ = 1; //both 1
 		glutPostRedisplay();
@@ -828,11 +855,7 @@ void KeyboardFunc(unsigned char key, int x, int y) {
 		//parallel side view
 	case 'd':
 	case 'D':
-//		eyeX = 15, eyeY = 0, eyeZ = 0;
-//		centerX = 0, centerY = 0, centerZ = 0;
-//		upX = 0, upY = 1, upZ = 0;
-
-		eyeX = 30, eyeY = 0, eyeZ = 0;
+		eyeX = 20, eyeY = 0, eyeZ = 0;
 		centerX = 0, centerY = 0, centerZ = 0;
 		upX = 0, upY = 1, upZ = 0;
 		glutPostRedisplay();
@@ -840,7 +863,7 @@ void KeyboardFunc(unsigned char key, int x, int y) {
 		// perspective
 	case 's':
 	case 'S':
-		eyeX = 10, eyeY = 12, eyeZ = 15;
+		eyeX = 10, eyeY = 12, eyeZ = 13;
 		centerX = 0, centerY = 0, centerZ = 0;
 		upX = 0, upY = 1, upZ = 0;
 		glutPostRedisplay();
@@ -849,7 +872,7 @@ void KeyboardFunc(unsigned char key, int x, int y) {
 }
 
 void timer(int v) {
-	dayForPlanet = (dayForPlanet + 1) % 360;
+	dayForPlanet = (dayForPlanet + 1) % 365;
 	yearForPlanet = (yearForPlanet + 2) % 60190;
 	glLoadIdentity();
 	gluLookAt(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ);
@@ -869,7 +892,7 @@ int main(int argc, char** argv) {
 	usage();
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_ALPHA | GLUT_DEPTH);
-	glutInitWindowSize(800, 600);
+	glutInitWindowSize(1000, 800);
 	glutCreateWindow("Solar System");
 
 	glutDisplayFunc(display);
