@@ -8,7 +8,7 @@ To have the textures visible when running the program, you have to edit the path
 so that they lead to the desired texture on your device.
 
 *NOTE*
-Saturn's rings currently not textures correctly.
+Saturn's rings currently not textured correctly.
 
 Here are a few images of what your output should look like.
 
